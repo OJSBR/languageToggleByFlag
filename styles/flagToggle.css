@@ -1,0 +1,91 @@
+/*
+ * @file plugins/blocks/languageToggleByFlag/styles/flagToggle.css
+ *
+ * Copyright (c) 2019-2024 Lepidus Tecnologia
+ *
+ * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
+ *
+ * CSS information.
+*/
+
+.flagToggle {
+    background-size: contain;
+    background-repeat: no-repeat;
+    float: left;
+    width: 16px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.flagToggle.ca {
+	background-image: url("../locale/ca/flag.png")
+}
+.flagToggle.cs {
+	background-image: url("../locale/cs/flag.png")
+}
+.flagToggle.da {
+	background-image: url("../locale/da/flag.png")
+}
+.flagToggle.de {
+	background-image: url("../locale/de/flag.png")
+}
+.flagToggle.el {
+	background-image: url("../locale/el/flag.png")
+}
+.flagToggle.en {
+	background-image: url("../locale/en/flag.png")
+}
+.flagToggle.es {
+	background-image: url("../locale/es/flag.png")
+}
+.flagToggle.eu {
+	background-image: url("../locale/eu/flag.png")
+}
+.flagToggle.fa {
+	background-image: url("../locale/fa/flag.png")
+}
+.flagToggle.fr_CA {
+	background-image: url("../locale/fr_CA/flag.png")
+}
+.flagToggle.fr_FR {
+	background-image: url("../locale/fr_FR/flag.png")
+}
+.flagToggle.hr {
+	background-image: url("../locale/hr/flag.png")
+}
+.flagToggle.it {
+	background-image: url("../locale/it/flag.png")
+}
+.flagToggle.ja {
+	background-image: url("../locale/ja/flag.png")
+}
+.flagToggle.nb {
+	background-image: url("../locale/nb/flag.png")
+}
+.flagToggle.nl {
+	background-image: url("../locale/nl/flag.png")
+}
+.flagToggle.pt_BR {
+	background-image: url("../locale/pt_BR/flag.png")
+}
+.flagToggle.pt_PT {
+	background-image: url("../locale/pt_PT/flag.png")
+}
+.flagToggle.ro {
+	background-image: url("../locale/ro/flag.png")
+}
+.flagToggle.ru {
+	background-image: url("../locale/ru/flag.png")
+}
+.flagToggle.sv {
+	background-image: url("../locale/sv/flag.png")
+}
+.flagToggle.uk {
+	background-image: url("../locale/uk/flag.png")
+}
+.flagToggle.vi {
+	background-image: url("../locale/vi/flag.png")
+}
+.flagToggle.zh_CN {
+	background-image: url("../locale/zh_CN/flag.png")
+}
