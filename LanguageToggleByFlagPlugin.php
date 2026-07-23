@@ -74,9 +74,9 @@ class LanguageToggleByFlagPlugin extends BlockPlugin
         }
 
         if (!empty($locales)) {
-            // Padroniza os nomes dos idiomas com inicial maiuscula (multibyte-safe):
-            // o ICU devolve o endonimo com a grafia nativa (English, mas espanol/portugues
-            // em minuscula), entao capitalizamos a primeira letra de cada nome.
+            // Normalise language names to start with a capital letter (multibyte-safe):
+            // ICU returns the endonym with its native casing (English, but "espanol" /
+            // "portugues" in lower case), so we upper-case the first letter of each name.
             $locales = array_map(
                 fn($name) => mb_strtoupper(mb_substr($name, 0, 1)) . mb_substr($name, 1),
                 $locales

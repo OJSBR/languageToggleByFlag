@@ -8,7 +8,7 @@
  * Common site sidebar menu -- language toggle.
  *}
 
-<link rel="stylesheet" type="text/css" href="/plugins/blocks/languageToggleByFlag/styles/flagToggle.css">
+<link rel="stylesheet" type="text/css" href="{$baseUrl}/plugins/blocks/languageToggleByFlag/styles/flagToggle.css">
 
 {if $enableLanguageToggle}
 <div class="pkp_block block_language language_toggle_flag">
