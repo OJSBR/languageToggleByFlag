@@ -20,7 +20,11 @@
 		<ul>
 			{foreach from=$languageToggleLocales item=localeName key=localeKey}
 				<li class="locale_{$localeKey|escape}{if $localeKey == $currentLocale} current{/if}" lang="{$localeKey|replace:"_":"-"}">
-					<a href="{url router=\PKP\core\PKPApplication::ROUTE_PAGE page="user" op="setLocale" path=$localeKey source=$smarty.server.REQUEST_URI}">
+					{* OJS 3.5 builds the redirect target as protocol://<source>, so `source`
+					   must carry host + path (a bare path yields an empty host, fails the
+					   allowed-host check and sends the reader to the portal home). This
+					   matches the core languageToggle block plugin. *}
+					<a href="{url router=\PKP\core\PKPApplication::ROUTE_PAGE page="user" op="setLocale" path=$localeKey source=$smarty.server.SERVER_NAME|cat:$smarty.server.REQUEST_URI}">
 
 						{* Adding a flag according to every language *}
 						<span class="flagToggle {$localeKey}">

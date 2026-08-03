@@ -4,7 +4,7 @@
 [![Version](https://img.shields.io/badge/version-3.5.0.2-blue)](version.xml)
 [![License](https://img.shields.io/badge/license-GPL--3.0-lightgrey)](LICENSE)
 
-**⬇️ Install package:** [OJS/OMP/OPS 3.5](https://github.com/OJSBR/languageToggleByFlag/releases/download/3.5.0.3/languageToggleByFlag-3.5.0.3.tar.gz) — or browse all [Releases](../../releases).
+**⬇️ Install package:** [OJS/OMP/OPS 3.5](https://github.com/OJSBR/languageToggleByFlag/releases/download/3.5.0.4/languageToggleByFlag-3.5.0.4.tar.gz) — or browse all [Releases](../../releases).
 
 A **block plugin** for **Open Journal Systems (OJS)**, **Open Monograph Press (OMP)** and
 **Open Preprint Systems (OPS)** that renders the language switcher in the sidebar as a list of
