@@ -1,0 +1,17 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: OJSBR\n"
+"Language-Team: OJSBR\n"
+"Language: sl\n"
+
+
+#, fuzzy
+msgid "plugins.block.languageToggleByFlag.displayName"
+msgstr "Preklop jezika z zastavicami"
+
+#, fuzzy
+msgid "plugins.block.languageToggleByFlag.description"
+msgstr "Ta vtičnik v stranski vrstici prikaže preklop jezika z zastavico za vsak jezik"

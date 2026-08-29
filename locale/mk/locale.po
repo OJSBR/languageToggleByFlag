@@ -1,0 +1,17 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: OJSBR\n"
+"Language-Team: OJSBR\n"
+"Language: mk\n"
+
+
+#, fuzzy
+msgid "plugins.block.languageToggleByFlag.displayName"
+msgstr "Менувач на јазик со знамиња"
+
+#, fuzzy
+msgid "plugins.block.languageToggleByFlag.description"
+msgstr "Овој приклучок овозможува менувач на јазик во страничната лента со знаме за секој јазик"

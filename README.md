@@ -1,10 +1,10 @@
 # Language Toggle by Flag — OJS/OMP/OPS plugin
 
 [![OJS](https://img.shields.io/badge/OJS-3.5-brightgreen)](https://pkp.sfu.ca/ojs/)
-[![Version](https://img.shields.io/badge/version-3.5.0.2-blue)](version.xml)
+[![Version](https://img.shields.io/badge/version-3.5.0.5-blue)](version.xml)
 [![License](https://img.shields.io/badge/license-GPL--3.0-lightgrey)](LICENSE)
 
-**⬇️ Install package:** [OJS/OMP/OPS 3.5](https://github.com/OJSBR/languageToggleByFlag/releases/download/3.5.0.4/languageToggleByFlag-3.5.0.4.tar.gz) — or browse all [Releases](../../releases).
+**⬇️ Install package:** [OJS/OMP/OPS 3.5](https://github.com/OJSBR/languageToggleByFlag/releases/download/3.5.0.5/languageToggleByFlag-3.5.0.5.tar.gz) — or browse all [Releases](../../releases).
 
 A **block plugin** for **Open Journal Systems (OJS)**, **Open Monograph Press (OMP)** and
 **Open Preprint Systems (OPS)** that renders the language switcher in the sidebar as a list of
@@ -18,7 +18,7 @@ A **block plugin** for **Open Journal Systems (OJS)**, **Open Monograph Press (O
 
 | PKP version | Branch | Plugin release |
 |-------------|--------|----------------|
-| OJS/OMP/OPS 3.5.x | [`stable-3_5_0`](../../tree/stable-3_5_0) *(default)* | 3.5.0.2 |
+| OJS/OMP/OPS 3.5.x | [`stable-3_5_0`](../../tree/stable-3_5_0) *(default)* | 3.5.0.5 |
 
 > Need 3.4 or earlier? Use the original repository:
 > [lepidus/languageToggleByFlag](https://github.com/lepidus/languageToggleByFlag).
