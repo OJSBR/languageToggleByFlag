@@ -6,7 +6,7 @@
  * Copyright (c) 2014-2021 Simon Fraser University
  * Copyright (c) 2003-2021 John Willinsky
  * Copyright (c) 2019-2024 Lepidus Tecnologia
- * Adapted for OJS/OMP/OPS 3.5 by OJSBR/STNT Tecnologia da Informação LTDA (https://ojsbr.com.br).
+ * Copyright (c) 2026 OJSBR (https://ojsbr.com)
  *
  * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
  *
@@ -55,12 +55,24 @@ class LanguageToggleByFlagPlugin extends BlockPlugin
         return __('plugins.block.languageToggleByFlag.description');
     }
 
+    /**
+     * The locales of a list that have a flag image in the plugin.
+     *
+     * @param string[] $localeKeys
+     *
+     * @return string[]
+     */
+    public function getLocalesWithFlag(array $localeKeys): array
+    {
+        return array_values(array_filter($localeKeys, fn ($locale) => preg_match('/^[a-zA-Z_@]+$/', (string) $locale) && is_file($this->getPluginPath() . '/locale/' . $locale . '/flag.png')));
+    }
+
     public function getContents($templateMgr, $request = null)
     {
+        $request ??= Application::get()->getRequest();
         $templateMgr->assign('isPostRequest', $request->isPost());
 
         if (!PKPSessionGuard::isSessionDisable()) {
-            $request ??= Application::get()->getRequest();
             $context = $request->getContext();
             $locales = Locale::getFormattedDisplayNames(
                 isset($context)
@@ -81,8 +93,13 @@ class LanguageToggleByFlagPlugin extends BlockPlugin
                 fn($name) => mb_strtoupper(mb_substr($name, 0, 1)) . mb_substr($name, 1),
                 $locales
             );
-            $templateMgr->assign('enableLanguageToggle', true);
-            $templateMgr->assign('languageToggleLocales', $locales);
+            $templateMgr->assign([
+                'enableLanguageToggle' => true,
+                'languageToggleLocales' => $locales,
+                // A language without a flag image is listed by name only, without an empty gap.
+                'languageToggleFlags' => $this->getLocalesWithFlag(array_keys($locales)),
+                'languageToggleStyleUrl' => $request->getBaseUrl() . '/' . $this->getPluginPath() . '/styles/flagToggle.css',
+            ]);
         }
 
         return parent::getContents($templateMgr, $request);

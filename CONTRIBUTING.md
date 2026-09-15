@@ -1,7 +1,7 @@
 # Contributing
 
 Thanks for your interest in improving this plugin! It is maintained by
-**[OJSBR](https://ojsbr.com.br)** and released under the **GNU GPL v3** so the whole
+**[OJSBR](https://ojsbr.com)** and released under the **GNU GPL v3** so the whole
 PKP community can use and improve it.
 
 This is an OJSBR adaptation of the original `languageToggleByFlag` plugin by
@@ -45,7 +45,7 @@ with this project.
 ## 🇧🇷 Português
 
 Obrigado pelo interesse em melhorar este plugin! Ele é mantido pela
-**[OJSBR](https://ojsbr.com.br)** e distribuído sob a **GNU GPL v3**, para que toda a
+**[OJSBR](https://ojsbr.com)** e distribuído sob a **GNU GPL v3**, para que toda a
 comunidade PKP possa usar e evoluir.
 
 Esta é uma adaptação da OJSBR do plugin original `languageToggleByFlag` da

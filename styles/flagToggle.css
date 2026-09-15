@@ -2,6 +2,7 @@
  * @file plugins/blocks/languageToggleByFlag/styles/flagToggle.css
  *
  * Copyright (c) 2019-2024 Lepidus Tecnologia
+ * Copyright (c) 2026 OJSBR (https://ojsbr.com)
  *
  * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
  *
@@ -47,9 +48,6 @@
 .flagToggle.fr_CA {
 	background-image: url("../locale/fr_CA/flag.png")
 }
-.flagToggle.fr_FR {
-	background-image: url("../locale/fr_FR/flag.png")
-}
 .flagToggle.hr {
 	background-image: url("../locale/hr/flag.png")
 }
@@ -59,17 +57,11 @@
 .flagToggle.ja {
 	background-image: url("../locale/ja/flag.png")
 }
-.flagToggle.nb {
-	background-image: url("../locale/nb/flag.png")
-}
 .flagToggle.nl {
 	background-image: url("../locale/nl/flag.png")
 }
 .flagToggle.pt_BR {
 	background-image: url("../locale/pt_BR/flag.png")
-}
-.flagToggle.pt_PT {
-	background-image: url("../locale/pt_PT/flag.png")
 }
 .flagToggle.ro {
 	background-image: url("../locale/ro/flag.png")
@@ -85,9 +77,6 @@
 }
 .flagToggle.vi {
 	background-image: url("../locale/vi/flag.png")
-}
-.flagToggle.zh_CN {
-	background-image: url("../locale/zh_CN/flag.png")
 }
 
 /*

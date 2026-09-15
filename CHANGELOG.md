@@ -2,6 +2,21 @@
 
 All notable changes to this plugin are documented here.
 
+## 3.5.0.6 — 2026-09-15
+
+**Fixes and review (no new features).**
+
+- **Fixed:** languages without a flag image in the plugin (Arabic, Azerbaijani, Bulgarian,
+  Finnish, Galician, Hungarian, Armenian, Indonesian, Georgian, Macedonian, Malay, Polish,
+  Slovenian, Serbian and Turkish) were listed after an empty flag-sized gap; they are now listed by
+  name only.
+- **Fixed:** four stylesheet rules still pointed to flags under the OJS 3.4 locale folders
+  (`fr_FR`, `nb`, `pt_PT`, `zh_CN`), which no longer exist; the 3.5 rules are kept.
+- **Fixed:** the block no longer reads the request before making sure it has one.
+- Language names, classes and the stylesheet URL are escaped in the template.
+- Standard review: OJSBR copyright next to Lepidus', normalized translation headers, a PHP test
+  suite and a Cypress spec, `.gitattributes`.
+
 ## 3.5.0.4 — 2026-08-03
 
 **Compatibility fix (no new features).**
