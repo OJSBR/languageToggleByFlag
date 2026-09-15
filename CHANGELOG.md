@@ -2,6 +2,18 @@
 
 All notable changes to this plugin are documented here.
 
+## 3.5.0.7 — 2026-09-15
+
+**Tests and delivery (no change in behaviour).**
+
+- PHP tests moved onto `PKP\tests\PKPTestCase` and PHPUnit (the standalone runner is gone), with a
+  check that PKP's plugin registry finds the plugin.
+- The Cypress spec checks that the link of each language brings a reader whose browser sends no
+  `Referer` back to the same page (the 3.5.0.4 fix), and puts the sidebar back after the run.
+- Continuous integration with [pkp-github-actions](https://github.com/pkp/pkp-github-actions) on
+  OJS, OMP and OPS 3.5.
+- Tests and `error_log` are left out of the release package.
+
 ## 3.5.0.6 — 2026-09-15
 
 **Fixes and review (no new features).**

@@ -14,7 +14,9 @@
 
 namespace APP\plugins\blocks\languageToggleByFlag\tests;
 
-class LocaleFilesTest extends TestCase
+use PKP\tests\PKPTestCase;
+
+class LocaleFilesTest extends PKPTestCase
 {
     /** Locale codes shipped by the plugin, as OJS 3.5 names them. */
     public const LOCALES = [
@@ -113,7 +115,7 @@ class LocaleFilesTest extends TestCase
     }
 
     /** Translations from the original authors keep the headers they were published with. */
-    public const UPSTREAM_HEADERS = ['ca', 'cs', 'da', 'de', 'el', 'en', 'es', 'eu', 'fa', 'fr_CA', 'hr', 'it', 'ja', 'nl', 'pt', 'pt_BR', 'ro', 'ru', 'sv', 'uk', 'vi'];
+    public const UPSTREAM_HEADERS = ['ca', 'cs', 'da', 'de', 'el', 'en', 'es', 'eu', 'fa', 'fr_CA', 'hr', 'it', 'ja', 'nl', 'pt_BR', 'ro', 'ru', 'sv', 'uk', 'vi'];
 
     public function testHeaderDeclaresTheLocaleAndTheTeam(): void
     {

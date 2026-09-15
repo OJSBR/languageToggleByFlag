@@ -1,10 +1,10 @@
 # Language Toggle by Flag — OJS/OMP/OPS plugin
 
 [![OJS](https://img.shields.io/badge/OJS-3.5-brightgreen)](https://pkp.sfu.ca/ojs/)
-[![Version](https://img.shields.io/badge/version-3.5.0.6-blue)](version.xml)
+[![Version](https://img.shields.io/badge/version-3.5.0.7-blue)](version.xml)
 [![License](https://img.shields.io/badge/license-GPL--3.0-lightgrey)](LICENSE)
 
-**⬇️ Install package:** [OJS/OMP/OPS 3.5](https://github.com/OJSBR/languageToggleByFlag/releases/download/3.5.0.6/languageToggleByFlag-3.5.0.6.tar.gz) — or browse all [Releases](../../releases).
+**⬇️ Install package:** [OJS/OMP/OPS 3.5](https://github.com/OJSBR/languageToggleByFlag/releases/download/3.5.0.7/languageToggleByFlag-3.5.0.7.tar.gz) — or browse all [Releases](../../releases).
 
 A **block plugin** for **Open Journal Systems (OJS)**, **Open Monograph Press (OMP)** and
 **Open Preprint Systems (OPS)** that renders the language switcher in the sidebar as a list of
@@ -18,7 +18,7 @@ A **block plugin** for **Open Journal Systems (OJS)**, **Open Monograph Press (O
 
 | PKP version | Branch | Plugin release |
 |-------------|--------|----------------|
-| OJS/OMP/OPS 3.5.x | [`stable-3_5_0`](../../tree/stable-3_5_0) *(default)* | 3.5.0.6 |
+| OJS/OMP/OPS 3.5.x | [`stable-3_5_0`](../../tree/stable-3_5_0) *(default)* | 3.5.0.7 |
 
 > Need 3.4 or earlier? Use the original repository:
 > [lepidus/languageToggleByFlag](https://github.com/lepidus/languageToggleByFlag).
@@ -55,18 +55,24 @@ that list; a flag next to each name makes the switcher recognizable at a glance.
 
 ## Tests
 
-- **PHP suite** (`tests/`, 19 tests): the plugin class against the installed PKP, the stylesheet
-  rules matching the flag images shipped, the languages listed with and without a flag, escaping in
-  the template and the 38 translations. Run either way from the application root:
+- **PHPUnit** (`tests/*Test.php`, on `PKP\tests\PKPTestCase`): the classes against the installed
+  PKP, the plugin found by PKP's plugin registry, the stylesheet rules matching the flag images
+  shipped, flags only for languages that have one, escaping in the template and the 38
+  translations. From the application root:
 
   ```bash
-  php plugins/blocks/languageToggleByFlag/tests/run.php
   lib/pkp/lib/vendor/bin/phpunit --configuration lib/pkp/tests/phpunit.xml --no-coverage "$PWD/plugins/blocks/languageToggleByFlag/tests"
   ```
 
-- **Cypress** (`cypress/tests/functional/LanguageToggleByFlag.cy.js`): on a journal page, the block
-  loads its stylesheet once, shows the flags and switching language keeps the reader on the same
-  page. Verified on OJS 3.5.0.3.
+- **Cypress** (`cypress/tests/functional/LanguageToggleByFlag.cy.js`, run by
+  [pkp-github-actions](https://github.com/pkp/pkp-github-actions) on OJS, OMP and OPS on every
+  push): enables the plugin and places the block in the sidebar, then on a reader page checks that
+  the stylesheet loads once, the flags are drawn, and the link of a language brings the reader back
+  to the same page, also when the browser sends no `Referer` (it fails with the path-only link of releases before 3.5.0.4).
+  The sidebar is put back after the run.
+- Verified on OJS 3.5.0.3.
+
+Tests are kept in the repository and are not part of the release package.
 
 ## Credits & authorship
 
@@ -75,6 +81,12 @@ that list; a flag next to each name makes the switcher recognizable at a glance.
   (<https://github.com/lepidus/languageToggleByFlag>), © Lepidus Tecnologia 2019–2024,
   © Simon Fraser University / John Willinsky.
 - Distributed under the **GNU GPL v3**, consistent with the original licensing.
+
+## AI use
+
+Generative AI (Claude, by Anthropic) was used to write and run tests, improve the code and bring
+it in line with PKP standards. Every change is reviewed and tested by OJSBR, which is responsible
+for the published releases.
 
 ## Contributing
 
@@ -126,11 +138,17 @@ seletor reconhecível de relance.
 
 ### Testes
 
-Suíte PHP em `tests/` (19 testes, pelo `tests/run.php` ou pelo PHPUnit do PKP): classe do plugin
-contra o PKP instalado, regras do CSS batendo com as bandeiras distribuídas, idiomas com e sem
-bandeira, escape no template e as 38 traduções. Spec Cypress em `cypress/tests/functional/`: o bloco
-carrega o CSS uma vez, mostra as bandeiras e a troca de idioma mantém a página. Verificado no
-OJS 3.5.0.3.
+PHPUnit em `tests/` (sobre `PKP\tests\PKPTestCase`) e Cypress em `cypress/tests/functional/`
+(rodado pelo [pkp-github-actions](https://github.com/pkp/pkp-github-actions) no OJS, OMP e OPS a
+cada push), com os comandos da seção em inglês. A suíte cobre as classes contra o PKP instalado, o
+plugin encontrado pelo registro de plugins, as regras do CSS batendo com as bandeiras distribuídas,
+bandeira só para idioma que tem imagem, escape no template e as 38 traduções. O Cypress liga o
+plugin, põe o bloco na barra lateral e, numa página do leitor, confere o CSS carregado uma vez, as
+bandeiras e que o link de cada idioma devolve o leitor à mesma página, inclusive quando o navegador
+não envia `Referer` (falha com o link só com caminho das versões anteriores à 3.5.0.4); a barra lateral volta ao que era no fim.
+Verificado no OJS 3.5.0.3.
+
+Os testes ficam no repositório e não fazem parte do pacote da release.
 
 ### Créditos e autoria
 
@@ -139,6 +157,12 @@ OJS 3.5.0.3.
   (<https://github.com/lepidus/languageToggleByFlag>), © Lepidus Tecnologia 2019–2024,
   © Simon Fraser University / John Willinsky.
 - Distribuído sob a **GNU GPL v3**, coerente com o licenciamento original.
+
+### Uso de IA
+
+Foi usada IA generativa (Claude, da Anthropic) para escrever e rodar testes, melhorar o código e
+alinhá-lo aos padrões da PKP. Toda mudança é revisada e testada pela OJSBR, que responde pelas
+releases publicadas.
 
 ### Licença
 

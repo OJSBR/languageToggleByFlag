@@ -14,8 +14,11 @@
 namespace APP\plugins\blocks\languageToggleByFlag\tests;
 
 use APP\plugins\blocks\languageToggleByFlag\LanguageToggleByFlagPlugin;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PKP\tests\PKPTestCase;
 
-class LanguageToggleByFlagTest extends TestCase
+#[CoversClass(LanguageToggleByFlagPlugin::class)]
+class LanguageToggleByFlagTest extends PKPTestCase
 {
     public function testEveryStylesheetRulePointsToAnExistingFlag(): void
     {
