@@ -67,9 +67,12 @@ that list; a flag next to each name makes the switcher recognizable at a glance.
 - **Cypress** (`cypress/tests/functional/LanguageToggleByFlag.cy.js`, run by
   [pkp-github-actions](https://github.com/pkp/pkp-github-actions) on OJS, OMP and OPS on every
   push): enables the plugin and places the block in the sidebar, then on a reader page checks that
-  the stylesheet loads once, the flags are drawn, and the link of a language brings the reader back
-  to the same page, also when the browser sends no `Referer` (it fails with the path-only link of releases before 3.5.0.4).
-  The sidebar is put back after the run.
+  the stylesheet loads once, the flags are drawn, the link of a language carries the host and the
+  current page (it fails with the path-only link of releases before 3.5.0.4) and brings the reader
+  back to the same page, also when the browser sends no `Referer`. That last check is skipped where
+  the web server's name is not the host of the site, as in PKP's CI (127.0.0.1 behind
+  `http://localhost`), where the core `languageToggle` block goes to the site index too. The
+  sidebar is put back after the run.
 - Verified on OJS 3.5.0.3.
 
 Tests are kept in the repository and are not part of the release package.
@@ -144,8 +147,11 @@ cada push), com os comandos da seção em inglês. A suíte cobre as classes con
 plugin encontrado pelo registro de plugins, as regras do CSS batendo com as bandeiras distribuídas,
 bandeira só para idioma que tem imagem, escape no template e as 38 traduções. O Cypress liga o
 plugin, põe o bloco na barra lateral e, numa página do leitor, confere o CSS carregado uma vez, as
-bandeiras e que o link de cada idioma devolve o leitor à mesma página, inclusive quando o navegador
-não envia `Referer` (falha com o link só com caminho das versões anteriores à 3.5.0.4); a barra lateral volta ao que era no fim.
+bandeiras, que o link de cada idioma leva host e página atual (falha com o link só com caminho das
+versões anteriores à 3.5.0.4) e devolve o leitor à mesma página, inclusive sem `Referer`; essa
+última conferência é pulada quando o nome do servidor web não é o host do site, como no CI da PKP
+(127.0.0.1 atrás de `http://localhost`), onde o bloco `languageToggle` do núcleo também vai para o
+índice do site. A barra lateral volta ao que era no fim.
 Verificado no OJS 3.5.0.3.
 
 Os testes ficam no repositório e não fazem parte do pacote da release.

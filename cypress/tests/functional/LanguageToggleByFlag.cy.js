@@ -152,22 +152,39 @@ describe('Language Toggle by Flag plugin', function() {
 
 		cy.get('.language_toggle_flag li:not(.current)').first().then(($li) => {
 			const locale = $li.attr('class').match(/locale_([A-Za-z_@]+)/)[1];
-			const href = $li.find('a').attr('href');
-			// Without a Referer header (a privacy setting, a link opened directly) OJS 3.5 relies
-			// on the source of the link alone: it must bring the reader back to the same page,
-			// not to the portal home. cy.request() sends no Referer, a click does.
-			request({url: href, followRedirect: false}).then((response) => {
-				expect(response.status).to.eq(302);
-				const target = new URL(response.redirectedToUrl);
-				expect(target.pathname).to.contain('/' + contextPath + '/');
-				expect(target.pathname).to.match(new RegExp('/' + pagePath + '$'));
+			cy.window().then((win) => {
+				const href = new URL($li.find('a').attr('href'), win.location.href);
+				const source = href.searchParams.get('source') || '';
+				// OJS 3.5 builds the target as protocol://<source>: the source carries the host
+				// and the current page (the 3.5.0.4 fix), as in the core languageToggle block.
+				expect(source, 'the source of the link').to.match(/^[^/]+\//);
+				expect(source.slice(source.indexOf('/')), 'the source of the link').to.eq(win.location.pathname + win.location.search);
+
+				// The core maps the source back to a page of the same journal only when the web
+				// server's name is the host of the base URL. PKP's CI serves 127.0.0.1 behind
+				// http://localhost, where the core block goes to the site index as well.
+				const sourceHost = source.slice(0, source.indexOf('/'));
+				if (sourceHost !== win.location.hostname && sourceHost !== win.location.host) {
+					cy.log('The web server name (' + sourceHost + ') is not the host of the site: redirect not checked');
+					return;
+				}
+
+				// Without a Referer header (a privacy setting, a link opened directly) the source of
+				// the link alone must bring the reader back to the same page, not to the portal
+				// home. cy.request() sends no Referer, a click does.
+				request({url: href.toString(), followRedirect: false}).then((response) => {
+					expect(response.status).to.eq(302);
+					const target = new URL(response.redirectedToUrl);
+					expect(target.pathname).to.contain('/' + contextPath + '/');
+					expect(target.pathname).to.match(new RegExp('/' + pagePath + '$'));
+				});
+				// The request above already switched the session: start again from a new one.
+				cy.clearCookies();
+				cy.visit(pageUrl(pagePath) + '?reload=' + Date.now());
+				cy.get('.language_toggle_flag li.locale_' + locale + ' a').click();
+				cy.get('.language_toggle_flag li.locale_' + locale, {timeout: 30000}).should('have.class', 'current');
+				cy.location('pathname').should('match', new RegExp('/' + pagePath + '$'));
 			});
-			// The request above already switched the session: start again from a new one.
-			cy.clearCookies();
-			cy.visit(pageUrl(pagePath) + '?reload=' + Date.now());
-			cy.get('.language_toggle_flag li.locale_' + locale + ' a').click();
-			cy.get('.language_toggle_flag li.locale_' + locale, {timeout: 30000}).should('have.class', 'current');
-			cy.location('pathname').should('match', new RegExp('/' + pagePath + '$'));
 		});
 	});
 
